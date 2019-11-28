@@ -7,6 +7,6 @@ module.exports = gql`
     aliases: [String]
     gender: String!
     culture: String
-    playedBy: String
+    playedBy: [String]
   }
 `;
