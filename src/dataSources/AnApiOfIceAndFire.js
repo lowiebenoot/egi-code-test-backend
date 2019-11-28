@@ -7,7 +7,7 @@ class AnApiOfIceAndFire extends RESTDataSource {
   }
 
   async getBooks() {
-    const books = await this.get('/books');
+    const books = await this.get('/books?pageSize=20');
     return books.map(this.transformBook);
   }
 
@@ -17,7 +17,7 @@ class AnApiOfIceAndFire extends RESTDataSource {
   }
 
   async getCharacters(pageNumber = 1) {
-    const characters = await this.get(`/characters?page=${pageNumber}`);
+    const characters = await this.get(`/characters?pageSize=20&page=${pageNumber}`);
     return characters.map(this.transformCharacter);
   }
 
