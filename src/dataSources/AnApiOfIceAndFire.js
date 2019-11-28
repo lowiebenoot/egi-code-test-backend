@@ -1,13 +1,15 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
 
+const DEFAULT_PAGE_SIZE = 20;
+
 class AnApiOfIceAndFire extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = 'https://anapioficeandfire.com/api';
   }
 
-  async getBooks() {
-    const books = await this.get('/books?pageSize=20');
+  async getBooks(pageNumber = 1, pageSize = DEFAULT_PAGE_SIZE) {
+    const books = await this.get(`/books?pageSize=${pageSize}&&page=${pageNumber}`);
     return books.map(this.transformBook);
   }
 
@@ -16,8 +18,8 @@ class AnApiOfIceAndFire extends RESTDataSource {
     return this.transformBook(book);
   }
 
-  async getCharacters(pageNumber = 1) {
-    const characters = await this.get(`/characters?pageSize=20&page=${pageNumber}`);
+  async getCharacters(pageNumber = 1, pageSize = DEFAULT_PAGE_SIZE) {
+    const characters = await this.get(`/characters?pageSize=${pageSize}&&page=${pageNumber}`);
     return characters.map(this.transformCharacter);
   }
 
