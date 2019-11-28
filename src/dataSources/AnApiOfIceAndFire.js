@@ -16,8 +16,8 @@ class AnApiOfIceAndFire extends RESTDataSource {
     return this.transformBook(book);
   }
 
-  async getCharacters() {
-    const characters = await this.get('/characters');
+  async getCharacters(pageNumber = 1) {
+    const characters = await this.get(`/characters?page=${pageNumber}`);
     return characters.map(this.transformCharacter);
   }
 

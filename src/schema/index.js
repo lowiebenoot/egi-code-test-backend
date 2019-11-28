@@ -6,7 +6,7 @@ const book = require('./book');
 
 const queries = gql`
   type Query {
-    characters: [Character]
+    characters(pageNumber: Int): [Character]
     character(id: ID!): Character
     books: [Book]
     book(id: ID!): Book
