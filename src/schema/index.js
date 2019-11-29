@@ -1,6 +1,5 @@
 const { gql } = require('apollo-server-lambda');
 
-const hello = require('./hello');
 const character = require('./character');
 const book = require('./book');
 

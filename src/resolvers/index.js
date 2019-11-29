@@ -1,5 +1,3 @@
-const hello = require('./hello');
-
 const resolvers = {
   Query: {
     characters: (root, args, { dataSources }) =>
